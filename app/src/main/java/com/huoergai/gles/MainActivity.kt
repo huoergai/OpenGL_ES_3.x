@@ -1,10 +1,9 @@
 package com.huoergai.gles
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.huoergai.gles.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
   private lateinit var binding: ActivityMainBinding
 

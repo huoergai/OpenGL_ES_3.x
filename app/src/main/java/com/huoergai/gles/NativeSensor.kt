@@ -6,9 +6,9 @@ import android.content.res.AssetManager
  * D&T: 2022-10-14 16:09
  * DES:
  */
-object SensorGraph {
+object NativeSensor {
   init {
-    System.loadLibrary("gles")
+    System.loadLibrary("native_sensor")
   }
 
   external fun init(assetManager: AssetManager)

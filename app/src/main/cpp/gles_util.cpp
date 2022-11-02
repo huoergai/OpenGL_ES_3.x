@@ -21,7 +21,6 @@ GLuint loadShader(GLenum shaderType, const std::string &source) {
 GLuint createProgram(const std::string &vtxSource, const std::string &frgmtSource) {
   GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vtxSource);
   GLuint frgmtShader = loadShader(GL_FRAGMENT_SHADER, frgmtSource);
-
   GLuint program = glCreateProgram();
   assert(program != 0);
 

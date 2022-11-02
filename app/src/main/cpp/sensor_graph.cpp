@@ -39,8 +39,8 @@ void SensorGraph::generateXPos() {
 }
 
 void SensorGraph::init(AAssetManager *assetManager) {
-  vertexShaderSource = readAsset(assetManager, "sensor_shader.glslv");
-  fragmentShaderSource = readAsset(assetManager, "sensor_shader.glslf");
+  vertexShaderSource = readAsset(assetManager, "sensor_graph.glslv");
+  fragmentShaderSource = readAsset(assetManager, "sensor_graph.glslf");
   setupSensor();
   generateXPos();
 }
@@ -92,6 +92,7 @@ void SensorGraph::render() {
   glVertexAttribPointer(vPositionHandle, 1, GL_FLOAT, GL_FALSE, 0, xPos);
 
   glEnableVertexAttribArray(vSensorValueHandle);
+
   glVertexAttribPointer(vSensorValueHandle, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
                         &sensorData[sensorDataIndex].x);
   glUniform4f(uFragColorHandle, 1.0f, 0.0f, 0.0f, 1.0f);

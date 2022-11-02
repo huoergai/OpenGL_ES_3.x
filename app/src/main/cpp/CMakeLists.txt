@@ -16,42 +16,59 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 
 project("gles")
 
-# Creates and names a library, sets it as either STATIC
-# or SHARED, and provides the relative paths to its source code.
-# You can define multiple libraries, and CMake builds them for you.
-# Gradle automatically packages shared libraries with your APK.
-file(GLOB SRC_DIR "*.h" "*.cpp")
-add_library( # Sets the name of the library.
-        gles
+add_library(utils
 
-        # Sets the library as a shared library.
         SHARED
 
-        # Provides a relative path to your source file(s).
-        ${SRC_DIR} gles_util.cpp gles_util.h)
+        util.h
+        util.cpp
+        gles_util.h
+        gles_util.cpp)
 
-# Searches for a specified prebuilt library and stores the path as a
-# variable. Because CMake includes system libraries in the search path by
-# default, you only need to specify the name of the public NDK library
-# you want to add. CMake verifies that the library exists before
-# completing its build.
+add_library(native_sensor
 
-find_library( # Sets the name of the path variable.
+        SHARED
+
+        native_sensor.cpp
+        sensor_graph.h
+        sensor_graph.cpp)
+
+add_library(native_triangle
+
+        SHARED
+
+        native_triangle.cpp
+        simple_triangle.h
+        simple_triangle.cpp)
+
+find_library(
         log-lib
 
         # Specifies the name of the NDK library that
         # you want CMake to locate.
         log)
 
+target_link_libraries(
+        utils
+
+        android
+        GLESv3
+        ${log-lib})
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        gles
+        native_sensor
 
-        android
-        GLESv3
+        utils
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
+
+target_link_libraries(native_triangle
+
+        utils
+        ${log-lib}
+        )
