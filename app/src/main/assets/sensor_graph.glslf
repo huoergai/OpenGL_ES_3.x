@@ -1,7 +1,9 @@
+#version 320 es
 precision mediump float;
 
-uniform vec4 uFragColor;
+layout(location = 2) uniform vec4 uFragColor;
+out vec4 glFragColor;
 
 void main() {
-    gl_FragColor = uFragColor;
+    glFragColor = uFragColor;
 }

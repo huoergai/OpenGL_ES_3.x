@@ -30,9 +30,9 @@ private:
     ALooper *looper;
 
     GLuint shaderProgram;
-    GLuint vPositionHandle;
-    GLuint vSensorValueHandle;
-    GLuint uFragColorHandle;
+    GLuint vPositionLocation = 0;
+    GLuint vSensorValueLocation = 1;
+    GLuint uFragColorLocation = 2;
     GLfloat xPos[SENSOR_HISTORY_LEN];
 
     struct AccelerometerData {

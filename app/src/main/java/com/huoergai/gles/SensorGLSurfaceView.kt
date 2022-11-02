@@ -29,7 +29,6 @@ class SensorGLSurfaceView(context: Context, attr: AttributeSet? = null) :
   init {
     setEGLContextClientVersion(3)
     setEGLConfigChooser(8, 8, 8, 8, 16, 0)
-    renderMode = RENDERMODE_WHEN_DIRTY
     setRenderer(SensorSurfaceRender())
     queueEvent { init(context.assets) }
   }

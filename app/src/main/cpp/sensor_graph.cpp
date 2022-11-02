@@ -53,15 +53,6 @@ void SensorGraph::surfaceCreated() {
 
   shaderProgram = createProgram(vertexShaderSource, fragmentShaderSource);
   assert(shaderProgram != 0);
-  GLint getPositionLocationRet = glGetAttribLocation(shaderProgram, "vPosition");
-  assert(getPositionLocationRet != -1);
-  vPositionHandle = (GLuint) getPositionLocationRet;
-  GLint getSensorValueLocationRet = glGetAttribLocation(shaderProgram, "vSensorValue");
-  assert(getSensorValueLocationRet != -1);
-  vSensorValueHandle = (GLuint) getSensorValueLocationRet;
-  GLint getFragColorLocationRet = glGetUniformLocation(shaderProgram, "uFragColor");
-  assert(getFragColorLocationRet != -1);
-  uFragColorHandle = (GLuint) getFragColorLocationRet;
 }
 
 void SensorGraph::surfaceChanged(int w, int h) {
@@ -88,24 +79,24 @@ void SensorGraph::render() {
 
   glUseProgram(shaderProgram);
 
-  glEnableVertexAttribArray(vPositionHandle);
-  glVertexAttribPointer(vPositionHandle, 1, GL_FLOAT, GL_FALSE, 0, xPos);
+  glEnableVertexAttribArray(vPositionLocation);
+  glVertexAttribPointer(vPositionLocation, 1, GL_FLOAT, GL_FALSE, 0, xPos);
 
-  glEnableVertexAttribArray(vSensorValueHandle);
+  glEnableVertexAttribArray(vSensorValueLocation);
 
-  glVertexAttribPointer(vSensorValueHandle, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
+  glVertexAttribPointer(vSensorValueLocation, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
                         &sensorData[sensorDataIndex].x);
-  glUniform4f(uFragColorHandle, 1.0f, 0.0f, 0.0f, 1.0f);
+  glUniform4f(uFragColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
   glDrawArrays(GL_LINE_STRIP, 0, SENSOR_HISTORY_LEN);
 
-  glVertexAttribPointer(vSensorValueHandle, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
+  glVertexAttribPointer(vSensorValueLocation, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
                         &sensorData[sensorDataIndex].y);
-  glUniform4f(uFragColorHandle, 0.0f, 1.0f, 0.0f, 1.0f);
+  glUniform4f(uFragColorLocation, 0.0f, 1.0f, 0.0f, 1.0f);
   glDrawArrays(GL_LINE_STRIP, 0, SENSOR_HISTORY_LEN);
 
-  glVertexAttribPointer(vSensorValueHandle, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
+  glVertexAttribPointer(vSensorValueLocation, 1, GL_FLOAT, GL_FALSE, sizeof(AccelerometerData),
                         &sensorData[sensorDataIndex].z);
-  glUniform4f(uFragColorHandle, 1.0f, 1.0f, 0.0f, 1.0f);
+  glUniform4f(uFragColorLocation, 1.0f, 1.0f, 0.0f, 1.0f);
   glDrawArrays(GL_LINE_STRIP, 0, SENSOR_HISTORY_LEN);
 }
 
