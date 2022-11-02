@@ -9,7 +9,4 @@ import android.util.AttributeSet
  * DES:
  */
 abstract class BaseGLSurfaceView(context: Context, attr: AttributeSet? = null) :
-  GLSurfaceView(context, attr) {
-
-
-}
+  GLSurfaceView(context, attr)
