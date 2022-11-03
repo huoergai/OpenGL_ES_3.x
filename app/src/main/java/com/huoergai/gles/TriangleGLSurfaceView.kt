@@ -13,10 +13,10 @@ import javax.microedition.khronos.opengles.GL10
 class TriangleGLSurfaceView(context: Context, attr: AttributeSet? = null) :
   BaseGLSurfaceView(context, attr) {
 
-  external fun init(assetManager: AssetManager)
-  external fun surfaceCreated()
-  external fun surfaceChanged(width: Int, height: Int)
-  external fun drawFrame()
+  private external fun init(assetManager: AssetManager)
+  private external fun surfaceCreated()
+  private external fun surfaceChanged(width: Int, height: Int)
+  private external fun drawFrame()
 
   companion object {
     init {

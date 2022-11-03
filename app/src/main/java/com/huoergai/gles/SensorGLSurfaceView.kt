@@ -13,12 +13,12 @@ import javax.microedition.khronos.opengles.GL10
 class SensorGLSurfaceView(context: Context, attr: AttributeSet? = null) :
   BaseGLSurfaceView(context, attr) {
 
-  external fun init(assetManager: AssetManager)
-  external fun surfaceCreated()
-  external fun surfaceChanged(width: Int, height: Int)
-  external fun drawFrame()
-  external fun pause()
-  external fun resume()
+  private external fun init(assetManager: AssetManager)
+  private external fun surfaceCreated()
+  private external fun surfaceChanged(width: Int, height: Int)
+  private external fun drawFrame()
+  private external fun pause()
+  private external fun resume()
 
   companion object {
     init {
