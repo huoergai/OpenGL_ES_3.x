@@ -39,8 +39,8 @@ void SensorGraph::generateXPos() {
 }
 
 void SensorGraph::init(AAssetManager *assetManager) {
-  vertexShaderSource = readAsset(assetManager, "sensor_graph.vs");
-  fragmentShaderSource = readAsset(assetManager, "sensor_graph.fs");
+  vertexShaderSource = readAsset(assetManager, "sensor_graph.vsh");
+  fragmentShaderSource = readAsset(assetManager, "sensor_graph.fsh");
   setupSensor();
   generateXPos();
 }

@@ -8,8 +8,8 @@
 #include "util.h"
 
 void simple_triangle::init(AAssetManager *assetManager) {
-  vertexSource = readAsset(assetManager, "simple_triangle.vs");
-  fragmtSource = readAsset(assetManager, "simple_triangle.fs");
+  vertexSource = readAsset(assetManager, "simple_triangle.vsh");
+  fragmtSource = readAsset(assetManager, "simple_triangle.fsh");
 }
 
 void simple_triangle::onSurfaceCreated() {
