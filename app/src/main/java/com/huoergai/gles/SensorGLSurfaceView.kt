@@ -8,9 +8,9 @@ import javax.microedition.khronos.opengles.GL10
 
 /**
  * D&T: 2022-10-31 15:52
- * DES:
+ * DES: 将传感器的数据转换为动态线性坐标
  */
-class SensorGLSurfaceView(context: Context, attr: AttributeSet? = null) :
+class SensorGLSurfaceView @JvmOverloads constructor(context: Context, attr: AttributeSet? = null) :
   BaseGLSurfaceView(context, attr) {
 
   private external fun init(assetManager: AssetManager)

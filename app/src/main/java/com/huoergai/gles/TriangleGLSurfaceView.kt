@@ -8,10 +8,11 @@ import javax.microedition.khronos.opengles.GL10
 
 /**
  * D&T: 2022-11-02 17:00
- * DES:
+ * DES: 绘制彩色三角形
  */
-class TriangleGLSurfaceView(context: Context, attr: AttributeSet? = null) :
-  BaseGLSurfaceView(context, attr) {
+class TriangleGLSurfaceView @JvmOverloads constructor(
+  context: Context, attr: AttributeSet? = null
+) : BaseGLSurfaceView(context, attr) {
 
   private external fun init(assetManager: AssetManager)
   private external fun surfaceCreated()
@@ -27,6 +28,7 @@ class TriangleGLSurfaceView(context: Context, attr: AttributeSet? = null) :
   init {
     setEGLContextClientVersion(3)
     setRenderer(TriangleRender())
+    renderMode = RENDERMODE_WHEN_DIRTY
     queueEvent { init(context.assets) }
   }
 
