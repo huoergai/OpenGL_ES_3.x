@@ -9,9 +9,9 @@ class MainActivity : BaseActivity() {
   private lateinit var binding: ActivityMainBinding
   private val viewTags = listOf("sensor", "triangle", "texture")
   private val clazzList = listOf(
-    SensorGLSurfaceView::class.java,
-    TriangleGLSurfaceView::class.java,
-    TextureMapGLSurfaceView::class.java
+    SensorGraphView::class.java,
+    TriangleView::class.java,
+    TextureMapView::class.java
   )
 
   override fun onCreate(savedInstanceState: Bundle?) {

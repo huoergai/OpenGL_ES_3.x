@@ -7,43 +7,31 @@ import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 /**
- * D&T: 2022-10-31 15:52
- * DES: 将传感器的数据转换为动态线性坐标
+ * D&T: 2022-11-02 17:00
+ * DES: 绘制彩色三角形
  */
-class SensorGLSurfaceView @JvmOverloads constructor(context: Context, attr: AttributeSet? = null) :
+class TriangleView @JvmOverloads constructor(context: Context, attr: AttributeSet? = null) :
   BaseGLSurfaceView(context, attr) {
 
   private external fun init(assetManager: AssetManager)
   private external fun surfaceCreated()
   private external fun surfaceChanged(width: Int, height: Int)
   private external fun drawFrame()
-  private external fun pause()
-  private external fun resume()
 
   companion object {
     init {
-      System.loadLibrary("native_sensor")
+      System.loadLibrary("native_triangle")
     }
   }
 
   init {
     setEGLContextClientVersion(3)
-    setEGLConfigChooser(8, 8, 8, 8, 16, 0)
-    setRenderer(SensorSurfaceRender())
+    setRenderer(TriangleRender())
+    renderMode = RENDERMODE_WHEN_DIRTY
     queueEvent { init(context.assets) }
   }
 
-  override fun onResume() {
-    super.onResume()
-    queueEvent { resume() }
-  }
-
-  override fun onPause() {
-    super.onPause()
-    queueEvent { pause() }
-  }
-
-  inner class SensorSurfaceRender : Renderer {
+  inner class TriangleRender : Renderer {
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
       surfaceCreated()
     }
@@ -55,5 +43,7 @@ class SensorGLSurfaceView @JvmOverloads constructor(context: Context, attr: Attr
     override fun onDrawFrame(gl: GL10?) {
       drawFrame()
     }
+
   }
+
 }

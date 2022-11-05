@@ -9,22 +9,21 @@
 simple_triangle simpleTriangle;
 extern "C" {
 JNIEXPORT void JNICALL
-Java_com_huoergai_gles_TriangleGLSurfaceView_init(JNIEnv *env, jobject thiz,
-                                                  jobject asset_manager) {
+Java_com_huoergai_gles_TriangleView_init(JNIEnv *env, jobject thiz, jobject asset_manager) {
   AAssetManager *assetManager = AAssetManager_fromJava(env, asset_manager);
   simpleTriangle.init(assetManager);
 }
 JNIEXPORT void JNICALL
-Java_com_huoergai_gles_TriangleGLSurfaceView_surfaceCreated(JNIEnv *env, jobject thiz) {
+Java_com_huoergai_gles_TriangleView_surfaceCreated(JNIEnv *env, jobject thiz) {
   simpleTriangle.onSurfaceCreated();
 }
 JNIEXPORT void JNICALL
-Java_com_huoergai_gles_TriangleGLSurfaceView_surfaceChanged(JNIEnv *env, jobject thiz, jint width,
-                                                            jint height) {
+Java_com_huoergai_gles_TriangleView_surfaceChanged(JNIEnv *env, jobject thiz, jint width,
+                                                   jint height) {
   simpleTriangle.onSurfaceChanged(width, height);
 }
 JNIEXPORT void JNICALL
-Java_com_huoergai_gles_TriangleGLSurfaceView_drawFrame(JNIEnv *env, jobject thiz) {
+Java_com_huoergai_gles_TriangleView_drawFrame(JNIEnv *env, jobject thiz) {
   simpleTriangle.onDraw();
 }
 }

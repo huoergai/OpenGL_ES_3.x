@@ -5,5 +5,5 @@ out vec2 vTexCoord;
 
 void main() {
     gl_Position = aPosition;
-    vTextCoord = aTextureCoord;
+    vTexCoord = aTextureCoord;
 }

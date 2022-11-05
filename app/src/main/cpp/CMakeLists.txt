@@ -35,10 +35,9 @@ add_library(native_triangle
         simple_triangle.h
         simple_triangle.cpp)
 
-find_library(
-        log-lib
+add_library(native_texture SHARED native_texture.cpp texture_map.h texture_map.cpp)
 
-        log)
+find_library(log-lib log)
 
 target_link_libraries(
         utils
@@ -47,15 +46,8 @@ target_link_libraries(
         GLESv3
         ${log-lib})
 
-target_link_libraries(
-        native_sensor
+target_link_libraries(native_sensor utils)
 
-        utils
-        ${log-lib})
+target_link_libraries(native_triangle utils)
 
-target_link_libraries(
-        native_triangle
-
-        utils
-        ${log-lib}
-)
+target_link_libraries(native_texture utils)
